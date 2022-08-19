@@ -15,10 +15,10 @@ parser = argparse.ArgumentParser() # Initializes argparse
 
 IP_Help = "Destination IP Address. E.g. 192.168.1.1 or 192.168.1.0/24"
 
-parser.add_argument("-ip", type=str, required=True, help=IP_Help) # adds -ip arguments and sets it data type to string and set to mandatory
+parser.add_argument("-ip", type=str, required=True, help=IP_Help) # adds -ip arguments and sets it data type to strings and set to mandatory
 args = parser.parse_args()
 
-# ===== Scan specific IP Address =====
+# ===== Scan Specific IP Address =====
 def scanSpecificAdd(ip):
     arp = ARP(pdst=ip) # Creating an ARP Packet
     ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
@@ -58,6 +58,10 @@ def main(ip):
     scanSpecificAdd(ip)
 
 main(args.ip)
+
+
+
+
 # try:
 #     if len(ListedAddress) == 4:
 #         scanSpecificAdd(args.ip) # if the input is in IP address format they it will start scanning it.
