@@ -2,7 +2,7 @@ import argparse
 import re
 import subprocess
 from time import sleep
-from colorama import Fore
+#from colorama import Fore
 from scapy.all import Ether, srp, ARP
 
 '''
