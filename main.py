@@ -23,7 +23,7 @@ def scanSpecificAdd(ip):
     ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
     packet = ether/arp # Stacking the arp and ether Packets.
 
-    result = srp(packet, timeout=3)[0]
+    result = srp(packet, timeout=3)[1]
     print(packet)
 
 
