@@ -7,7 +7,7 @@ from scapy.all import Ether, srp, ARP
 
 '''
 TodoList:
-1. Fix the scapy error NoModuleFound and/or calling pkt(str) python 3 makes no sense Suggestion-> Read the scapy documentation
+1. Fix the calling pkt(str) python 3 makes no sense Suggestion-> Read the scapy documentation
 '''
 
 parser = argparse.ArgumentParser() # Initializes argparse
@@ -24,7 +24,8 @@ def scanSpecificAdd(ip):
     packet = ether/arp # Stacking the arp and ether Packets.
 
     result = srp(packet, timeout=3)[1]
-    print(packet)
+    for i in result:
+        print(str(i))
 
 
 # ===== Scan for IP Address range =====
