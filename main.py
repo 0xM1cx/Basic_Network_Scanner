@@ -2,9 +2,7 @@ import argparse
 import re
 import subprocess
 from time import sleep
-#from colorama import Fore
 from scapy.all import Ether, srp, ARP
-
 '''
 TodoList:
 1. Fix the calling pkt(str) python 3 makes no sense Suggestion-> Read the scapy documentation
