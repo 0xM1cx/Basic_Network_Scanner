@@ -59,12 +59,3 @@ main(args.ip)
 
 
 
-
-# try:
-#     if len(ListedAddress) == 4:
-#         scanSpecificAdd(args.ip) # if the input is in IP address format they it will start scanning it.
-#     elif len(ListedAddress) == 5: 
-#         scanSubnetAdd(args.ip)  
-#     print(Fore.CYAN + "ONLINE" + Fore.WHITE)
-# except:
-#     print(Fore.RED + "OFFLINE" + Fore.WHITE)
