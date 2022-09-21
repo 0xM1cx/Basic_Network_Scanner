@@ -1,8 +1,10 @@
+#!bin/python3
 import argparse
 import re
 import subprocess
 from time import sleep
 from scapy.all import Ether, srp, ARP
+
 '''
 TodoList:
 1. Fix the calling pkt(str) python 3 makes no sense Suggestion-> Read the scapy documentation
@@ -22,9 +24,6 @@ def scanSpecificAdd(ip):
     packet = ether/arp # Stacking the arp and ether Packets.
 
     result = srp(packet, timeout=3)[1]
-    for i in result:
-        print(str(i))
-
 
 # ===== Scan for IP Address range =====
 def scanSubnetAdd(ip):
@@ -56,6 +55,3 @@ def main(ip):
     scanSpecificAdd(ip)
 
 main(args.ip)
-
-
-
