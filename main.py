@@ -1,4 +1,5 @@
 #!bin/python3
+
 import argparse
 import re
 import subprocess
@@ -7,7 +8,7 @@ from scapy.all import Ether, srp, ARP
 
 '''
 TodoList:
-1. Fix the calling pkt(str) python 3 makes no sense Suggestion-> Read the scapy documentation
+1. Fix the calling pkt(str) python 3 makes no sense Suggestion -> Read the scapy documentation
 '''
 
 parser = argparse.ArgumentParser() # Initializes argparse
