@@ -26,6 +26,8 @@ def scanSpecificAdd(ip):
 
     result = srp(packet, timeout=3)[1]
 
+
+
 # ===== Scan for IP Address range =====
 def scanSubnetAdd(ip):
     arp = ARP(pdst=ip) # Creating an ARP Packet
@@ -54,5 +56,7 @@ def main(ip):
             exit()
 
     scanSpecificAdd(ip)
+
+
 
 main(args.ip)
