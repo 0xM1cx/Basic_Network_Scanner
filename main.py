@@ -19,44 +19,46 @@ parser.add_argument("-ip", type=str, required=True, help=IP_Help) # adds -ip arg
 args = parser.parse_args()
 
 # ===== Scan Specific IP Address =====
-def scanSpecificAdd(ip):
-    arp = ARP(pdst=ip) # Creating an ARP Packet
-    ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
-    packet = ether/arp # Stacking the arp and ether Packets.
+class ScanSpecificAdd:
+    def __init__(self, ip):
+        arp = ARP(pdst=ip) # Creating an ARP Packet
+        ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
+        packet = ether/arp # Stacking the arp and ether Packets.
 
-    result = srp(packet, timeout=3)[1]
+        result = srp(packet, timeout=3)[1]
 
 
 
 # ===== Scan for IP Address range =====
-def scanSubnetAdd(ip):
-    arp = ARP(pdst=ip) # Creating an ARP Packet
-    ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
-    packet = ether/arp # Stacking the arp and ether Packets.
+class ScanSpecificSubnet:
+    def __init__(self, ip):
+        arp = ARP(pdst=ip) # Creating an ARP Packet
+        ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
+        packet = ether/arp # Stacking the arp and ether Packets.
 
-    result = srp(packet, timeout=3)[0]
+        result = srp(packet, timeout=3)[0]
 
-    clients = []
+        clients = []
 
-    for sent, received in result:
-        clients.append({'ip': received.psrc, 'mac': received.hwsrc})
+        for sent, received in result:
+            clients.append({'ip': received.psrc, 'mac': received.hwsrc})
+        
+        print(clients)
+
+class Main:
+    def __init__(self, ip):
+        ListedAddress = re.split(r"[.|/]", args.ip) # Splits the ip address into 4 or 5 elements in a list.
+
+        # ===== check if the input is in IP address format or not
+        for address in ListedAddress:
+            if int(address) in range(0,256) and len(ListedAddress) == 4 or len(ListedAddress) == 5:
+                continue
+            else:
+                print("Follow the IP Address format")
+                sleep(5)
+                exit()
+
     
-    print(clients)
 
-def main(ip):
-    ListedAddress = re.split(r"[.|/]", args.ip) # Splits the ip address into 4 or 5 elements in a list.
+   
 
-    # ===== check if the input is in IP address format or not
-    for address in ListedAddress:
-        if int(address) in range(0,256) and len(ListedAddress) == 4 or len(ListedAddress) == 5:
-            continue
-        else:
-            print("Follow the IP Address format")
-            sleep(5)
-            exit()
-
-    scanSpecificAdd(ip)
-
-
-
-main(args.ip)
