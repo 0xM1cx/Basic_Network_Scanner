@@ -36,14 +36,12 @@ class ScanSpecificSubnet:
         ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
         packet = ether/arp # Stacking the arp and ether Packets.
 
-        result = srp(packet, timeout=3)[0]
-
-        clients = []
-
-        for sent, received in result:
-            clients.append({'ip': received.psrc, 'mac': received.hwsrc})
+        RESULTS = srp(packet, timeout=3)[0]
+        CLIENTS = []
+        for sent, received in RESULTS:
+            CLIENTS.append({'ip': received.psrc, 'mac': received.hwsrc})
         
-        print(clients)
+        print(CLIENTS)
 
 class Main:
     def __init__(self, ip):
