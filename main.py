@@ -41,6 +41,7 @@ class ScanSpecificSubnet:
         for sent, received in RESULTS:
             CLIENTS.append({'ip': received.psrc, 'mac': received.hwsrc})
         
+        # Print the hosts discovered in the network
         print(CLIENTS)
 
 class Main:
@@ -53,7 +54,7 @@ class Main:
                 continue
             else:
                 print("Follow the IP Address format")
-                sleep(5)
+                sleep(3)
                 exit()
 
     
