@@ -9,10 +9,11 @@ from scapy.all import Ether, srp, ARP
 '''
 TodoList:
 1. Fix the calling pkt(str) python 3 makes no sense Suggestion -> Read the scapy documentation
+2. Add a new feature to support the range of ip(s)
 '''
 
 parser = argparse.ArgumentParser() # Initializes argparse
-
+#test
 IP_Help = "Destination IP Address. E.g. 192.168.1.1 or 192.168.1.0/24"
 
 parser.add_argument("-ip", type=str, required=True, help=IP_Help) # adds -ip arguments and sets it data type to strings and set to mandatory
@@ -24,11 +25,8 @@ class ScanSpecificAdd:
         arp = ARP(pdst=ip) # Creating an ARP Packet
         ether = Ether(dst="ff:ff:ff:ff:ff:ff") # Creating a broadcast Packet
         packet = ether/arp # Stacking the arp and ether Packets.
-
         result = srp(packet, timeout=3)[1]
-
-
-
+        
 # ===== Scan for IP Address range =====
 class ScanSpecificSubnet:
     def __init__(self, ip):
