@@ -5,12 +5,17 @@ import re
 import subprocess
 from time import sleep
 from scapy.all import Ether, srp, ARP
+from _imports_ import banner
 
 '''
 TodoList:
 1. Fix the calling pkt(str) python 3 makes no sense Suggestion -> Read the scapy documentation
 2. Add a new feature to support the range of ip(s)
+3. 
 '''
+
+
+
 
 parser = argparse.ArgumentParser() # Initializes argparse
 #test
@@ -42,18 +47,19 @@ class ScanSpecificSubnet:
         # Print the hosts discovered in the network
         print(CLIENTS)
 
-class Main:
-    def __init__(self, ip):
-        ListedAddress = re.split(r"[.|/]", args.ip) # Splits the ip address into 4 or 5 elements in a list.
 
-        # ===== check if the input is in IP address format or not
-        for address in ListedAddress:
-            if int(address) in range(0,256) and len(ListedAddress) == 4 or len(ListedAddress) == 5:
-                continue
-            else:
-                print("Follow the IP Address format")
-                sleep(3)
-                exit()
+if __name__ == "__main__":
+    banner()
+    ListedAddress = re.split(r"[.|/]", args.ip) # Splits the ip address into 4 or 5 elements in a list.
+
+    # ===== check if the input is in IP address format or not
+    for address in ListedAddress:
+        if int(address) in range(0,256) and len(ListedAddress) == 4 or len(ListedAddress) == 5:
+            continue
+        else:
+            print("Follow the IP Address format")
+            sleep(3)
+            exit()
 
     
 
